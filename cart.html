@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Store | By Neeraj</title>
+
+    <!-- main stylesheet -->
+    <link rel="stylesheet" href="styles/style.css" />
+
+    <!-- page stylesheet  -->
+    <link rel="stylesheet" href="styles/register.css" />
+    <link rel="stylesheet" href="styles/cart.css" />
+  </head>
+  <body>
+    <!-- header start -->
+    <div class="header">
+      <!-- logo  -->
+      <div class="logo">
+        <span id="logo-cursib">Books by</span>
+        <span id="logo-name">Neeraj</span>
+      </div>
+
+      <!-- nav links  -->
+      <nav class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="shop.html">EXPLORE</a>
+      </nav>
+
+      <!-- searchbar  -->
+      <div class="search-container">
+        <input type="text" name="searchbar" id="main-search" />
+        <img id="search-icon" src="assets/icons/search (2).png" alt="" />
+      </div>
+
+      <!-- cart  -->
+      <div class="cart">
+        <img src="assets/icons/cart.png" alt="" class="cart-btn" />
+      </div>
+
+      <!-- login  -->
+      <a class="login-btn" href="login.html">Log In</a>
+    </div>
+    <!-- header end  -->
+
+    <!-- cart  table start  -->
+    <table>
+      <thead>
+        <tr>
+          <th>SL No</th>
+          <th>Book Img</th>
+          <th>Book Name</th>
+          <th>Quantity</th>
+          <th>Book Price</th>
+          <th>Sub Total Price</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><img src="https://placekitten.com/50/50" alt="Book Image" /></td>
+          <td>Random Book</td>
+          <td>
+            <button class="decrement">-</button>
+            <input type="text" class="quantity-textbox" value="1" />
+            <button class="increment">+</button>
+          </td>
+          <td>$19.99</td>
+          <td>$39.98</td>
+          <td><button class="remove">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- cart table end  -->
+
+    <!-- total price  -->
+    <h1 class="total-price">
+      Your Total Price
+      <p class="price">$200</p>
+    </h1>
+
+    <!-- footer start  -->
+    <div class="footer">
+      <!-- footer-text  -->
+      <div class="footer-text">
+        <!-- logo  -->
+        <div class="logo footer-logo">
+          <span id="logo-cursib">Books by</span>
+          <span id="logo-name">Neeraj</span>
+        </div>
+
+        <p class="footer-text-para">
+          A Curated Book Collection Where anyone can see the books buy the books
+          and save them into there wishlist to buy later. <br /><br />
+          <span id="dev-name-heading">Designed & Developed By</span><br />
+          <span id="dev-name">Neeraj Kumar</span>
+        </p>
+
+        <div class="share-links">
+          <a href=""> <img src="assets/icons/linkedin.png" alt="" /></a>
+          <a href=""> <img src="assets/icons/facebook.png" alt="" /></a>
+          <a href=""> <img src="assets/icons/whatsapp.png" alt="" /></a>
+          <a href=""> <img src="assets/icons/instagram.png" alt="" /></a>
+          <img
+            class="profile-footer"
+            src="assets/images/IMG_20221205_225853_077.jpg"
+            alt=""
+          />
+        </div>
+
+        <!-- bg circle 4  -->
+        <div class="bg-circle-4 effect"></div>
+      </div>
+
+      <!-- footer links  -->
+      <div class="footer-links">
+        <div class="product-links links-cat">
+          <p class="link-heading">Product</p>
+          <a href="" class="link">Download</a>
+          <a href="" class="link">Pricing</a>
+          <a href="" class="link">Server</a>
+        </div>
+
+        <div class="user-links links-cat">
+          <p class="link-heading">User</p>
+          <a href="" class="footer-register">Register</a>
+          <a href="" class="login">Login</a>
+          <a href="" class="shop">Shop</a>
+          <a href="" class="link-category">Categories</a>
+        </div>
+
+        <div class="engage-links links-cat">
+          <p class="link-heading">Engage</p>
+          <a href="" class="about-us">About Us</a>
+          <a href="" class="contact-us"> Contact Us</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- copyright  -->
+    <p class="copyright">All Copyrightes Reserved @ Neeraj Kumar ;]</p>
+
+    <!-- background circles effect  -->
+    <div class="bg-circle-1 effect"></div>
+  </body>
+</html>

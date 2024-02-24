@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Bonbon&family=Lily+Script+One&family=Outfit&family=Sacramento&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #3f4461;
+  z-index: 0;
+}
+/* header start  */
+.header {
+  width: 97vw;
+  height: 5rem;
+  background-color: #262d48;
+  margin: auto;
+  border-radius: 10px;
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem;
+  align-items: center;
+  z-index: 1;
+}
+.logo {
+  background-color: #3f4461;
+  width: 5.5rem;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  color: #7f8ab2;
+  flex-shrink: 0;
+}
+.logo #logo-cursib {
+  color: #82869d;
+  font-family: "bonbon";
+}
+.logo #logo-name {
+  font-family: "outfit";
+  font-weight: 800;
+  /* font-size: 1.1rem; */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #3f4461;
+  padding: 0.8rem;
+  border-radius: 2rem;
+  font-size: 10px;
+  font-family: "outfit";
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+/* search bar  */
+#main-search {
+  background-color: rgba(222, 223, 235, 0.24);
+  border: none;
+  border-radius: 5rem;
+  padding-left: 3rem;
+  width: 100%;
+  height: 100%;
+  color: #e2e2e2;
+  font-family: "outfit";
+  font-size: 17px;
+}
+#main-search[type="text"]:focus {
+  outline: 5px solid #3f4461; /* Remove the default focus outline */
+}
+.search-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#search-icon {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.5rem;
+  width: 1.5rem;
+}
+.cart-btn {
+  width: 2.2rem;
+}
+.login-btn {
+  font-family: "outfit";
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  flex-shrink: 0;
+  padding: 1rem;
+  border-radius: 5rem;
+  background-color: #3f4461;
+  text-decoration: none;
+}
+/* header end  */
+
+.btn {
+  background-color: #7e57c2;
+  color: #fff;
+  font-family: "outfit";
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 1rem;
+  border-radius: 5rem;
+  border: none;
+}
+
+/* footer start  */
+.footer {
+  margin: auto;
+  margin-top: 8rem;
+  /* border: 2px solid white; */
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+  z-index: 1;
+}
+.footer-text {
+  width: 40rem;
+  /* border: 2px solid white; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 25rem;
+  font-family: "outfit";
+  color: #fff;
+  font-weight: bold;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.footer-text-para {
+  letter-spacing: 1px;
+  margin-top: 2rem;
+}
+.footer-logo {
+  background-color: #262d48;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 8rem;
+  padding: 1.2rem;
+}
+#dev-name-heading {
+  font-size: 25px;
+  font-weight: bold;
+}
+#dev-name {
+  color: #ba68c8;
+  font-size: 20px;
+  font-weight: bold;
+}
+.share-links {
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
+  /* border: 2px solid white; */
+  align-items: center;
+}
+.share-links a {
+  align-self: flex-end;
+}
+.profile-footer {
+  width: 6rem;
+  border-radius: 3rem;
+}
+
+.footer-links {
+  display: flex;
+  width: 30rem;
+  /* border: 2px solid white; */
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4rem;
+}
+.links-cat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.2rem;
+  font-family: "outfit";
+  font-weight: bolder;
+}
+.links-cat p {
+  font-size: 1.3rem;
+  color: #262d48;
+}
+.links-cat a {
+  color: #ccbae9;
+  text-decoration: none;
+}
+/* footer end  */
+
+.copyright {
+  margin-top: 4rem;
+  color: #5e5d61;
+  text-align: center;
+  font-family: "outfit";
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.effect {
+  width: 17rem;
+  height: 17rem;
+  background-color: #d9d9d9;
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(120px);
+}
+.bg-circle-1 {
+  top: -3rem;
+  left: 40%;
+}
+.bg-circle-2 {
+  top: 28rem;
+  right: 3rem;
+  background-color: #ba68c8;
+  /* border-radius: 0rem 0 0 9rem; */
+}
+.bg-circle-3 {
+  top: 54rem;
+  left: -6rem;
+}
+.bg-circle-4 {
+  top: 112rem;
+  right: 0rem;
+}

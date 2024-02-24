@@ -1,0 +1,171 @@
+/* hero start  */
+.hero {
+  margin: auto;
+  width: 90vw;
+  height: 30rem;
+  /* border: 2px solid white; */
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  font-family: "outfit";
+}
+.hero-text {
+  width: 26rem;
+  /* border: 2px solid white; */
+  margin-top: 8rem;
+  flex-shrink: 0;
+}
+#hero-title {
+  font-size: 50px;
+  font-weight: bold;
+}
+#hero-text-name {
+  color: #82869d;
+  font-size: 25px;
+  font-family: "lily script one";
+}
+.shop-now-btn {
+  margin-top: 2.5rem;
+}
+.hero-image {
+  width: 30rem;
+  flex-shrink: 0;
+}
+/* hero end  */
+
+/* categories start  */
+.categories {
+  margin: auto;
+  margin-top: 3rem;
+  /* border: 2px solid white; */
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.categories-title {
+  margin: auto;
+  color: #fff;
+  font-family: "outfit";
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.categories-title span {
+  color: #bfabe1;
+}
+.cards {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.card img {
+  width: 14em;
+}
+.card-2 img {
+  width: 15rem;
+}
+.cards p {
+  color: #fff;
+  font-family: "outfit";
+  font-size: 16px;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.view-all-category-btn {
+  margin: auto;
+}
+/* categories end  */
+
+/* student offer start  */
+.student-offer {
+  margin: auto;
+  margin-top: 3rem;
+  /* border: 2px solid white; */
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+.stu-off-img {
+  width: 30rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.stu-off-text {
+  /* border: 2px solid white; */
+  width: 35rem;
+  color: #fff;
+  font-family: "outfit";
+}
+#stu-off-head {
+  font-family: "Sacramento";
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+}
+#stu-off-title {
+  font-size: 50px;
+  font-weight: bolder;
+}
+#off-percent-text {
+  color: #bfabe1;
+}
+.signup-now-btn {
+  margin-top: 2.7rem;
+}
+/* student offer end  */
+
+/* testimony start  */
+.testimony {
+  margin: auto;
+  margin-top: 3rem;
+  /* border: 2px solid white; */
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.testimony-text {
+  /* border: 2px solid white; */
+  width: 35rem;
+  color: #fff;
+  font-family: "outfit";
+  font-weight: bold;
+}
+#testimony-text-head {
+  font-family: "Sacramento";
+  color: black;
+  font-size: 30px;
+}
+#testimony-text-title {
+  font-size: 50px;
+  font-weight: bolder;
+}
+.testimonial {
+  width: 30rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.09);
+  padding: 3rem;
+  border-radius: 20px;
+  color: #fff;
+  font-family: "outfit";
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3rem;
+}
+.reviewer-name {
+  font-size: 1.2;
+}
+/* testimony end  */
