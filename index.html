@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book Store | By Neeraj</title>
+    <title>ShopSync</title>
 
     <!-- main stylesheet -->
     <link rel="stylesheet" href="styles/style.css" />
@@ -16,8 +16,8 @@
     <div class="header">
       <!-- logo  -->
       <div class="logo">
-        <span id="logo-cursib">Books by</span>
-        <span id="logo-name">Neeraj</span>
+        <span id="logo-cursib">Shop</span>
+        <span id="logo-name">Sync</span>
       </div>
 
       <!-- nav links  -->
@@ -33,12 +33,25 @@
       </div>
 
       <!-- cart  -->
-      <div class="cart">
-        <img src="assets/icons/cart.png" alt="" class="cart-btn" />
+      <div class="cart" style="display: none;">
+        <a href="cart.html"
+          ><img src="assets/icons/cart.png" alt="" class="cart-btn"
+        /></a>
+      </div>
+
+      <div class="dashboard" style="display: none;">
+        <a href="dashboard.html">
+          <img src="assets/icons/dashboard-icon.png" class="cart-btn" alt="" />
+        </a>
       </div>
 
       <!-- login  -->
-      <a class="login-btn" href="login.html">Log In</a>
+      <a class="login-btn" id="login-btn" href="login.html">Log In</a>
+
+      <!-- logout -->
+      <a class="login-btn log-out" id="logout-btn" style="display: none"
+        >Log Out</a
+      >
     </div>
     <!-- header end  -->
 
@@ -47,14 +60,17 @@
       <!-- hero text  -->
       <div class="hero-text">
         <p>
-          <span id="hero-title">Discover Your Favorite Book </span><br />
-          <span id="hero-para">From the Most Amazing Book Collection</span> by
+          <span id="hero-title">Discover The Hidden Gems Around You </span
+          ><br />
+          <span id="hero-para">form</span>
           <br />
-          <span id="hero-text-name">Neeraj Kumar</span>
+          <span id="hero-text-name">Nostalgia To You</span>
         </p>
 
         <!-- shop now btn  -->
-        <button class="shop-now-btn btn">SHOP NOW</button>
+        <button class="shop-now-btn btn">
+          <a href="register.html">SIGN UP NOW</a>
+        </button>
       </div>
 
       <!-- hero image  -->
@@ -68,7 +84,9 @@
     <div class="categories">
       <!-- categories header text  -->
       <p class="categories-title">
-        We Serve Books That will Unveil Your <br /><span>Imagination</span>
+        We Serve the places only your Forefathers knew <br /><span
+          >Shop's for your convinence and peace</span
+        >
       </p>
 
       <!-- category cards  -->
@@ -77,27 +95,27 @@
         <div class="card-1 card">
           <img src="assets/illustrations/card-1.svg" alt="" />
 
-          <p>Arts & Photography <br />Books</p>
+          <p>Food <br />Stalls</p>
         </div>
 
         <!-- card-2  -->
         <div class="card-2 card">
           <img src="assets/illustrations/card-2.svg" alt="" />
 
-          <p>Biographies</p>
+          <p>Grocerry Stores</p>
         </div>
 
         <!-- card -3  -->
         <div class="card-3 card">
           <img src="assets/illustrations/carrd-3.svg" alt="" />
 
-          <p>Business & Money</p>
+          <p>All that you need</p>
         </div>
       </div>
       <!-- category cards end  -->
 
       <!-- view-all-category-btn  -->
-      <button class="view-all-category-btn btn">VIEW ALL CATEGORY</button>
+      <button class="view-all-category-btn btn">Search the Local</button>
     </div>
     <!-- categories end  -->
 
@@ -113,19 +131,22 @@
         <p>
           <span id="stu-off-head">Easier Decision Making For</span><br />
           <span id="stu-off-title"
-            >Special <span id="off-percent-text">50%</span> Off for Our Student
-            Committee</span
+            >Special <span id="off-percent-text">50%</span> Off for Our
+            Student</span
           ><br />
 
-          We understand the Student needs as we are once like them so we are
-          introducing <br />
-          this special offer to get one step closer to our student readers ,
+          As in this fast forward World Students are the one who does not
+          embrace the locals<br />
+          this special offer to get one step closer to our Local<br />
+          <span id="stu-off-head">Nostalgic ShopOwners</span> ,
           <br />
-          Happy Reading.
+          Happy Shoping.
         </p>
 
         <!-- signup now btn  -->
-        <button class="signup-now-btn btn">SIGN UP NOW</button>
+        <button class="signup-now-btn btn">
+          <a href="register.html">SIGN UP NOW</a>
+        </button>
       </div>
     </div>
     <!-- student offer end  -->
@@ -133,19 +154,22 @@
     <!-- testimony start  -->
     <div class="testimony">
       <p class="testimony-text">
-        <span id="testimony-text-head">Review Reader</span><br />
-        <span id="testimony-text-title">What People Say About Us</span><br />
+        <span id="testimony-text-head">Review Shops</span><br />
+        <span id="testimony-text-title"
+          >See What you are <span id="stu-off-head"> Missing</span> </span
+        ><br />
 
-        We are delighted to say that we have got most positive among all other
-        competitors , on average which is an achievement and a record for
-        ourselves.
+        We are delighted to say that we have got most positive results in
+        Connection Local Shop Owners to People.
       </p>
 
       <div class="testimonial">
         <p class="review">
           <span id="quotes">“</span>
-          One of the most Curated Book Collections I have ever seen , These
-          Books are just Mind Blowing... Thank you for this Neeraj
+          <br />
+          One of the most Curated Product Collections I have ever seen , These
+          Products are just Mind Blowing in aspect of Pricing. As WEll AS
+          HELPING LOCAL SHOPs.
           <span id="quotes">“</span>
         </p>
 
@@ -160,15 +184,16 @@
       <div class="footer-text">
         <!-- logo  -->
         <div class="logo footer-logo">
-          <span id="logo-cursib">Books by</span>
-          <span id="logo-name">Neeraj</span>
+          <span id="logo-cursib">Shop</span>
+          <span id="logo-name">Sync</span>
         </div>
 
         <p class="footer-text-para">
-          A Curated Book Collection Where anyone can see the books buy the books
-          and save them into there wishlist to buy later. <br /><br />
+          A Curated Product Collection Where anyone can see the Products to save
+          fuel and time.
+          <br /><br />
           <span id="dev-name-heading">Designed & Developed By</span><br />
-          <span id="dev-name">Neeraj Kumar</span>
+          <span id="dev-name">TEAM : ILH - 023</span>
         </p>
 
         <div class="share-links">
@@ -176,11 +201,6 @@
           <a href=""> <img src="assets/icons/facebook.png" alt="" /></a>
           <a href=""> <img src="assets/icons/whatsapp.png" alt="" /></a>
           <a href=""> <img src="assets/icons/instagram.png" alt="" /></a>
-          <img
-            class="profile-footer"
-            src="assets/images/IMG_20221205_225853_077.jpg"
-            alt=""
-          />
         </div>
       </div>
 
@@ -217,5 +237,80 @@
     <div class="bg-circle-2 effect"></div>
     <div class="bg-circle-3 effect"></div>
     <div class="bg-circle-4 effect"></div>
+
+    <script>
+      //LOGOUT SECTION CODE START////////////////////////////////////////////////////////////////
+      const login_btn = document.querySelector("#login-btn");
+      const logout_btn = document.querySelector("#logout-btn");
+      const header = document.querySelector(".header");
+      const cart = document.querySelector(".cart");
+      const dashboard = document.querySelector(".dashboard");
+
+      // on page load do the following
+      function onPageLoad() {
+
+        const name_data_element = document.createElement("p");
+
+        name_data_element.classList.add("session-name");
+
+        const session_id = window.sessionStorage.getItem("id");
+        const session_name = window.sessionStorage.getItem("name");
+        const role = window.sessionStorage.getItem("role");
+        const status = window.sessionStorage.getItem("status");
+
+        if (status == "success") {
+          if (session_name != null) {
+            name_data_element.textContent = "Hi\n" + session_name.split(" ")[0];
+          }
+          header.appendChild(name_data_element);
+
+          if (session_id && session_name != null) {
+            login_btn.style.display = "none";
+            logout_btn.style.display = "block";
+          }
+          if (role == "user") {
+            cart.style.display = "block";
+          } else if (role == "shop_keeper") {
+            cart.style.display = "block";
+            dashboard.style.display = "block";
+          }
+        } else if (status == "fail") {
+          alert(" Failed to login , Invalid Username or Password.");
+        }
+      }
+      window.onload = onPageLoad();
+
+      async function logOut() {
+        try {
+          const response = await fetch(
+            "https://shopsync.pythonanywhere.com/logout"
+          );
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          const result = await response.json();
+          console.log(result);
+          alert(result["msg"]);
+        } catch (error) {
+          console.error("Error:", error);
+          alert(
+            "Error registering user. Please check the console for details."
+          );
+        }
+      }
+
+      logout_btn.addEventListener("click", function (event) {
+        logOut().then(clearSessionAndReload)
+      });
+
+      function clearSessionAndReload() {
+        sessionStorage.clear();
+        window.location.reload();
+      };
+      //LOGOUT SECTION CODE END//////////////////////////////////////////////////////////////////////////////////////////////
+    
+    </script>
   </body>
 </html>

@@ -24,6 +24,10 @@
   font-size: 25px;
   font-family: "lily script one";
 }
+a {
+  text-decoration: none;
+  text-emphasis-color: white;
+}
 .shop-now-btn {
   margin-top: 2.5rem;
 }
@@ -169,3 +173,5 @@
   font-size: 1.2;
 }
 /* testimony end  */
+
+

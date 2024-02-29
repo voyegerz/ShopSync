@@ -98,6 +98,7 @@ body {
   border-radius: 5rem;
   background-color: #3f4461;
   text-decoration: none;
+  cursor: pointer;
 }
 /* header end  */
 
@@ -111,6 +112,14 @@ body {
   padding: 1rem;
   border-radius: 5rem;
   border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #845bca;
+  box-shadow: 4px 0 20px #845bca;
+}
+.btn:active {
+  background-color: #5e3b99;
 }
 
 /* footer start  */
@@ -234,4 +243,9 @@ body {
 .bg-circle-4 {
   top: 112rem;
   right: 0rem;
+}
+.session-name {
+  font-family: "outfit";
+  font-size: 1rem;
+  color: white;
 }

@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Store | By Neeraj</title>
+    <title>Shop Sync</title>
 
     <!-- main stylesheet -->
     <link rel="stylesheet" href="styles/style.css" />
 
     <!-- page stylesheet  -->
-    <link rel="stylesheet" href="styles/shop.css" />
+    <link rel="stylesheet" href="styles/register.css" />
+    <link rel="stylesheet" href="styles/dashboard.css" />
   </head>
   <body>
     <!-- header start -->
@@ -33,13 +34,13 @@
       </div>
 
       <!-- cart  -->
-      <div class="cart" style="display: none">
+      <div class="cart" style="display: none;">
         <a href="cart.html"
           ><img src="assets/icons/cart.png" alt="" class="cart-btn"
         /></a>
       </div>
 
-      <div class="dashboard" style="display: none">
+      <div class="dashboard" style="display: none;">
         <a href="dashboard.html">
           <img src="assets/icons/dashboard-icon.png" class="cart-btn" alt="" />
         </a>
@@ -55,152 +56,197 @@
     </div>
     <!-- header end  -->
 
-    <!-- genre selection bar start  -->
-    <div class="genre-selection-bar">
-      <div class="genres">
-        <div class="genre-heading">
-          <p>Products by Category</p>
+    <!-- main container-body -->
+    <div class="main-container">
+      <!-- dashboard head boxes  start-->
+      <div class="head-box-container">
+        <div class="head-box h1">
+          <img src="/assets/icons/prod.png" alt="" />
+          <p>
+            Total Products<br /><span id="total-no">571</span>
+            <span id="add-product-btn">+ Add Products</span>
+          </p>
         </div>
 
-        <div class="genre-1 genre">
-          <p>All</p>
-          <div class="active-indicator"></div>
+        <div class="head-box h2">
+          <img src="/assets/icons/prod.png" alt="" />
+          <p>
+            Out of Stock<br /><span id="total-no">60</span>
+            <span id="inventory-text"
+              ><img id="img-inventory" src="/assets/icons/boxes.png" alt="" />
+              Show Inventory</span
+            >
+          </p>
         </div>
 
-        <div class="genre-2 genre">
-          <p>Clothings</p>
-          <div></div>
+        <div class="head-box h3">
+          <img src="/assets/icons/user.png" alt="" />
+          <p>People at Shop<br /><span id="total-no">20</span></p>
         </div>
 
-        <div class="genre-3 genre">
-          <p>Health</p>
-          <div></div>
-        </div>
-
-        <div class="genre-4 genre">
-          <p>Appliances</p>
-          <div></div>
-        </div>
-
-        <div class="genre-5 genre">
-          <p>Foods</p>
-          <div></div>
+        <div class="head-box h4">
+          <img src="/assets/icons/prod.png" alt="" />
+          <p>Limited in Stock<br /><span id="total-no">5</span></p>
         </div>
       </div>
-      <div class="dividor"></div>
+      <!-- dashboard head boxes end-->
+
+      <!-- Add Products Section -->
+      <div class="add-product-container">
+        <h1>Add Products to Your Inventory</h1>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Ser.</th>
+              <th>Name</th>
+              <th>Price [₹]</th>
+              <th>Quantity</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Example Row 1 -->
+            <tr>
+              <td>1</td>
+              <td><input class="inp-prod p_name" id="p_name" type="text" /></td>
+              <td>
+                <input class="inp-prod p_price" type="text" id="p_price" />
+              </td>
+              <td>
+                <input
+                  class="inp-prod p_quant"
+                  type="text"
+                  id="p_quant"
+                  name=""
+                  id=""
+                />
+              </td>
+              <td>
+                <button class="del-prod-row" style="display: none">
+                  <div class="line l-1"></div>
+                  <div class="line l-2"></div>
+                </button>
+              </td>
+              <td><button class="add-prod-row">+ Add More</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button id="add-inv-btn">Add to Inventory</button>
+      </div>
+
+      <!-- Inventory Show Section -->
+      <div class="product-inventory-container add-product-container">
+        <div class="inventory-header">
+          <h1>Product Inventory</h1>
+          <div class="filtering-components">
+            <!-- filter -->
+            <div class="filter">
+              <label for="" class="filter-label" id="p_filter">Filter</label>
+              <select name="filter-dropdown" id="filter-dropdown">
+                <optgroup label="Products">
+                  <option value="electronic">Electronic</option>
+                  <option value="health">Health</option>
+                </optgroup>
+                <optgroup label="Services">
+                  <option value="food-places">Food Places</option>
+                  <option value="toor-places">Toor Places</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- search -->
+            <div class="searchbox">
+              <input
+                type="text"
+                class="search-box-input"
+                id="search-inp-element"
+                placeholder="@Search"
+              />
+              <button class="search-prod-btn">
+                <img
+                  class="search-prod-btn-img"
+                  src="assets/icons/search-list-big.png"
+                  alt=""
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <table>
+          <thead>
+            <tr>
+              <th>Ser.</th>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Price [₹]</th>
+              <th>Quantity</th>
+              <th>LA Date</th>
+              <th>PType</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr>
+              <th><hr /></th>
+              <th><hr /></th>
+              <th><hr /></th>
+              <th><hr /></th>
+              <th><hr /></th>
+              <th><hr /></th>
+              <th><hr /></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Example Row 1 -->
+            <tr>
+              <td>1</td>
+              <td><input type="text" class="inp-prod" id="p_id" /></td>
+              <td><input class="inp-prod" id="p_name" type="text" /></td>
+              <td><input class="inp-prod" type="text" id="p_price" /></td>
+              <td>
+                <input
+                  class="inp-prod"
+                  type="text"
+                  id="p_quant"
+                  name=""
+                  id=""
+                />
+              </td>
+              <td><input type="text" class="inp-prod" id="la-date" /></td>
+              <td><input type="text" class="inp-prod" id="p_type" /></td>
+              <td>
+                <button class="edit-prod-row-btn edit-prod-btn">
+                  <img src="/assets/icons/edit-btn-big.png" alt="" />
+                </button>
+              </td>
+              <td>
+                <button class="update-prod-row-btn add-prod-row">
+                  Update ↑
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="center">
+          <div class="pagination">
+            <a href="#">←</a>
+            <a href="#">1</a>
+            <a href="#" class="active">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">→</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- genre-selection-bar end  -->
-
-    <!-- books list start  -->
-    <!-- book list container  -->
-    <div class="books-list">
-      <!-- book 1  (container)  -->
-      <div class="book-1 book">
-        <!-- book image  -->
-        <div class="book-img">
-          <img src="assets/images/atomic-habits.jpg" alt="" />
-        </div>
-
-        <!-- book text  -->
-        <div class="book-text">
-          <p class="book-name">Atomic Habits</p>
-
-          <p class="book-author-text">
-            by <span class="book-author-name">James Clear</span>
-          </p>
-
-          <div class="pricing-n-rating">
-            <!-- book rating  -->
-            <div class="book-rating-container">
-              <img src="assets/icons/star.png" alt="" />
-              <p class="book-rating">4.8</p>
-            </div>
-
-            <!-- book price -->
-            <p class="book-price"><span class="doller">$</span>100</p>
-          </div>
-
-          <!-- book description  -->
-          <p class="book-desc">
-            Packed with evidence-based strategies, Atomic Habits will teach you
-            how to make small changes that will transform your habits and
-            deliver amazing results.
-          </p>
-        </div>
-      </div>
-
-      <!-- book 2  -->
-      <div class="book-1 book">
-        <!-- book image  -->
-        <div class="book-img">
-          <img src="assets/images/atomic-habits.jpg" alt="" />
-        </div>
-
-        <!-- book text  -->
-        <div class="book-text">
-          <p class="book-name">Atomic Habits</p>
-
-          <p class="book-author-text">
-            by <span class="book-author-name">James Clear</span>
-          </p>
-
-          <div class="pricing-n-rating">
-            <!-- book rating  -->
-            <div class="book-rating-container">
-              <img src="assets/icons/star.png" alt="" />
-              <p class="book-rating">4.8</p>
-            </div>
-
-            <!-- book price -->
-            <p class="book-price"><span class="doller">$</span>100</p>
-          </div>
-
-          <!-- book description  -->
-          <p class="book-desc">
-            Packed with evidence-based strategies, Atomic Habits will teach you
-            how to make small changes that will transform your habits and
-            deliver amazing results.
-          </p>
-        </div>
-      </div>
-
-      <!-- book 3  -->
-      <div class="book-1 book">
-        <!-- book image  -->
-        <div class="book-img">
-          <img src="assets/images/atomic-habits.jpg" alt="" />
-        </div>
-
-        <!-- book text  -->
-        <div class="book-text">
-          <p class="book-name">Atomic Habits</p>
-
-          <p class="book-author-text">
-            by <span class="book-author-name">James Clear</span>
-          </p>
-
-          <div class="pricing-n-rating">
-            <!-- book rating  -->
-            <div class="book-rating-container">
-              <img src="assets/icons/star.png" alt="" />
-              <p class="book-rating">4.8</p>
-            </div>
-
-            <!-- book price -->
-            <p class="book-price"><span class="doller">$</span>100</p>
-          </div>
-
-          <!-- book description  -->
-          <p class="book-desc">
-            Packed with evidence-based strategies, Atomic Habits will teach you
-            how to make small changes that will transform your habits and
-            deliver amazing results.
-          </p>
-        </div>
-      </div>
-      <!-- book containers end  -->
-    </div>
-    <!-- books list end  -->
 
     <!-- footer start  -->
     <div class="footer">
@@ -246,7 +292,7 @@
 
         <div class="user-links links-cat">
           <p class="link-heading">User</p>
-          <a href="" class="register">Register</a>
+          <a href="" class="footer-register">Register</a>
           <a href="" class="login">Login</a>
           <a href="" class="shop">Shop</a>
           <a href="" class="link-category">Categories</a>
@@ -266,7 +312,6 @@
     <!-- background circles effect  -->
     <div class="bg-circle-1 effect"></div>
     <script>
-      //LOGOUT START//////////////////////////////////////////////////////////////
       //LOGOUT SECTION CODE START////////////////////////////////////////////////////////////////
       const login_btn = document.querySelector("#login-btn");
       const logout_btn = document.querySelector("#logout-btn");
@@ -337,8 +382,8 @@
         window.location.reload();
       }
       //LOGOUT SECTION CODE END//////////////////////////////////////////////////////////////////////////////////////////////
-
-      //LOGOUT END//////////////////////////////////////////////////////////////
     </script>
+    <script src="/scripts/add_prods.js"></script>
+    <script src="scripts/prod_inventory.js"></script>
   </body>
 </html>
