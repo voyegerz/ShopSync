@@ -33,13 +33,13 @@
       </div>
 
       <!-- cart  -->
-      <div class="cart" style="display: none;">
+      <div class="cart" style="display: none">
         <a href="cart.html"
           ><img src="assets/icons/cart.png" alt="" class="cart-btn"
         /></a>
       </div>
 
-      <div class="dashboard" style="display: none;">
+      <div class="dashboard" style="display: none">
         <a href="dashboard.html">
           <img src="assets/icons/dashboard-icon.png" class="cart-btn" alt="" />
         </a>
@@ -67,7 +67,7 @@
         <label for="role-select">Select Role</label>
         <div class="role-select">
           <label for="role-user">User</label>
-          <input type="radio" name="role" id="role-user" checked value="user" />
+          <input type="radio" name="role" id="role-user" value="user" />
           <label for="role-shopkeeper">Shop keeper</label>
           <input
             type="radio"
@@ -206,7 +206,6 @@
 
       // on page load do the following
       function onPageLoad() {
-
         const name_data_element = document.createElement("p");
 
         name_data_element.classList.add("session-name");
@@ -260,15 +259,15 @@
       }
 
       logout_btn.addEventListener("click", function (event) {
-        logOut().then(clearSessionAndReload)
+        logOut().then(clearSessionAndReload);
       });
 
       function clearSessionAndReload() {
         sessionStorage.clear();
         window.location.reload();
-      };
+      }
       //LOGOUT SECTION CODE END//////////////////////////////////////////////////////////////////////////////////////////////
-    
+
       //LOGOUT END//////////////////////////////////////////////////////////////
 
       //Register Start//////////////////////////////////////////////////////////////
