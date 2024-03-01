@@ -1,0 +1,4 @@
+# exclude everything from 
+server_files
+
+# show the gitignore
