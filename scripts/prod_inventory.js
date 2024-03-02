@@ -22,6 +22,32 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error:", error));
   }
 
+  // Function to fetch and display shop products data for shopkeeper with search
+  function fetchShopProducts(searchQuery = "") {
+    const s_id = window.sessionStorage.getItem("id"); // Replace with the actual value for s_id
+
+    // Include the search query in the API endpoint
+    const apiUrl = `https://shopsync.pythonanywhere.com/search_shop_products?s_id=${s_id}&q=${searchQuery}`;
+
+    fetch(apiUrl, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        updateProductInventoryTable(data.search_results);
+        console.log(data);
+      })
+      .catch((error) => console.error("Error:", error));
+  }
+
   // Function to update the product inventory table with data
   function updateProductInventoryTable(inventoryData) {
     const tableBody = document.querySelector(
@@ -45,11 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
             <td><input class="inp-prod" type="text" id="p_quant" value="${
               product.p_quantity
             }" /></td>
-            <td><input type="text" class="inp-prod" id="la-date" value="${
-              product.last_added_date
+            <td><input type="text" class="inp-prod" id="lm-date" value="${
+              product.lm_date
             }" /></td>
             <td><input type="text" class="inp-prod" id="p_type" value="${
-              product.product_type
+              product.p_type
             }" /></td>
             <td>
               <button class="edit-prod-row-btn edit-prod-btn">
@@ -59,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
           `;
 
       tableBody.appendChild(row);
+      disableProductRowEditing(row);
     });
   }
 
@@ -70,8 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputFields = row.querySelectorAll(".inp-prod");
     console.log("enabling");
     inputFields.forEach((input) => {
-        input.removeAttribute("readonly");
-        input.style.textDecoration = "underline dashed #2b6fd5";
+      input.removeAttribute("readonly");
+      input.style.textDecoration = "underline dashed #2b6fd5";
     });
   }
 
@@ -80,9 +107,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputFields = row.querySelectorAll(".inp-prod");
     console.log("disabling");
     inputFields.forEach((input) => {
-        input.setAttribute("readonly", true);
-        input.style.textDecoration = "none";
+      input.setAttribute("readonly", true);
+      input.style.textDecoration = "none";
     });
+  }
+
+  // Function to update product data using the API endpoint
+  function updateProductData(productData) {
+    fetch("https://shopsync.pythonanywhere.com/update_product", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(productData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        alert(data.msg); // You can use alert or any other way to notify the user
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   // Event delegation for "Edit" and "Update" buttons inside the table body
@@ -105,6 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const p_name = row.querySelector("#p_name").value;
       const p_price = row.querySelector("#p_price").value;
       const p_quantity = row.querySelector("#p_quant").value;
+      const p_type = row.querySelector("#p_type").value;
 
       const s_id = window.sessionStorage.getItem("id"); // Replace with the actual value for s_id
 
@@ -113,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
         p_name: p_name,
         p_price: p_price,
         p_quantity: p_quantity,
+        p_type: p_type,
         s_id: s_id,
       };
 
@@ -120,22 +166,45 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Function to update product data using the API endpoint
-  function updateProductData(productData) {
-    fetch("https://shopsync.pythonanywhere.com/update_product", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(productData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        alert(data.msg); // You can use alert or any other way to notify the user
-      })
-      .catch((error) => console.error("Error:", error));
+  function handleSearchShopProds() {
+    const searchInput = document.getElementById("search-inp-element");
+    const searchQuery = searchInput.value.trim();
+    if (searchQuery.length > 0) {
+      fetchShopProducts(searchQuery);
+      if (searchQuery == "all") {
+        fetchProductInventoryData();
+      }
+    } else {
+      alert("Please enter a search term");
+    }
   }
+
+  // Add event listener to the search button
+  const searchButton = document.querySelector(".search-prod-btn");
+  searchButton.addEventListener("click", handleSearchShopProds);
+
+  // cancel search button functionality
+  const cancelSearchButton = document.querySelector(".cancel-search-btn");
+  const searchInput = document.getElementById("search-inp-element");
+  searchInput.addEventListener("input", function (e) {
+    if (e.target.value.length > 0) {
+      cancelSearchButton.style.display = "block";
+    } else {
+      cancelSearchButton.style.display = "none";
+      fetchProductInventoryData();
+    }
+  });
+  searchInput.addEventListener("keydown", function (e) {
+    if (e.key == "Enter") {
+      handleSearchShopProds();
+    }
+  });
+
+  cancelSearchButton.addEventListener("click", function (e) {
+    searchInput.value = "";
+    fetchProductInventoryData();
+    cancelSearchButton.style.display = "none";
+  });
 
   // ... (Keep the other event listeners for filtering, searching, editing, and updating)
 

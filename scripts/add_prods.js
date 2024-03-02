@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
         p_name: cells[0].value,
         p_price: cells[1].value,
         p_quantity: cells[2].value,
+        p_type: cells[3].value,
         s_id: s_id, // Replace with the actual value for s_id
       };
 
