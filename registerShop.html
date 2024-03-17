@@ -3,14 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shop Sync</title>
+    <title>Store | By Neeraj</title>
 
     <!-- main stylesheet -->
     <link rel="stylesheet" href="styles/style.css" />
 
-    <!-- page stylesheet  -->
+    <!-- register page stylesheet  -->
     <link rel="stylesheet" href="styles/register.css" />
-    <link rel="stylesheet" href="styles/cart.css" />
+
+    <!-- registerShop stylesheet -->
+    <link rel="stylesheet" href="/styles/registerShop.css" />
   </head>
   <body>
     <!-- header start -->
@@ -56,42 +58,46 @@
     </div>
     <!-- header end  -->
 
-    <!-- cart  table start  -->
-    <table>
-      <thead>
-        <tr>
-          <th>SL No</th>
-          <th>Book Img</th>
-          <th>Book Name</th>
-          <th>Quantity</th>
-          <th>Book Price</th>
-          <th>Sub Total Price</th>
-          <th>Remove</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td><img src="https://placekitten.com/50/50" alt="Book Image" /></td>
-          <td>Random Book</td>
-          <td>
-            <button class="decrement">-</button>
-            <input type="text" class="quantity-textbox" value="1" />
-            <button class="increment">+</button>
-          </td>
-          <td>$19.99</td>
-          <td>$39.98</td>
-          <td><button class="remove">Remove</button></td>
-        </tr>
-      </tbody>
-    </table>
-    <!-- cart table end  -->
+    <!-- register start  -->
+    <div class="register">
+      <div class="register-left">
+        <img src="assets/illustrations/register.svg" alt="" />
+      </div>
 
-    <!-- total price  -->
-    <h1 class="total-price">
-      Your Total Price
-      <p class="price">$200</p>
-    </h1>
+      <div class="register-right">
+        <h1 class="heading">Register Your Shop</h1>
+
+        <label for="shop_name" class="s-options">Shop Name</label>
+        <input type="text" name="shop_name" id="shop_name" />
+
+        <label for="shop_loc" class="s-options">Shop Location</label>
+        <div class="loc">
+          <select class="loc-dd" id="state">
+            <option value="hide">--State--</option>
+          </select>
+
+          <select class="loc-dd" id="district">
+            <option value="hide">--District--</option>
+          </select>
+
+          <select class="loc-dd" id="subdistrict">
+            <option value="hide">--Sub District--</option>
+          </select>
+
+          <select class="loc-dd" id="city_village">
+            <option value="hide">--City/Village--</option>
+          </select>
+        </div>
+
+        <label for="address">Shop's Full Address</label>
+        <input type="textarea" name="address" id="address" />
+
+        <label for="shop_type" class="s-options">Shop Type</label>
+        <input type="text" name="shop_type" id="shop_type" />
+
+        <button class="register-s-btn btn">Register</button>
+      </div>
+    </div>
 
     <!-- footer start  -->
     <div class="footer">
@@ -156,7 +162,8 @@
 
     <!-- background circles effect  -->
     <div class="bg-circle-1 effect"></div>
+
     <script src="/scripts/auth.js"></script>
-    
+    <script src="/scripts/shopRegistration.js"></script>
   </body>
 </html>

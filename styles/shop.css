@@ -6,8 +6,8 @@
   right: 0rem;
 }
 
-/* genre-selection-bar start  */
-.genre-selection-bar {
+/* p-cat-selection-bar start  */
+.p-cat-selection-bar {
   margin: auto;
   display: flex;
   width: 80vw;
@@ -18,7 +18,7 @@
   z-index: 1;
   gap: 1.5rem;
 }
-.genres {
+.p-cats {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -27,12 +27,12 @@
   font-size: 25px;
   color: #fff;
 }
-.genre {
+.p-cat {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.genre .active-indicator {
+.p-cat .active-indicator {
   background-color: #ba68c8;
   width: 3.2rem;
   height: 0.6rem;
@@ -46,10 +46,10 @@
   background-color: #777c98;
   border-radius: 13px;
 }
-/* genre-selection-bar end  */
+/* p-cat-selection-bar end  */
 
-/* book-list start  */
-.books-list {
+/* product-list start  */
+.products-list {
   margin: auto;
   width: 80vw;
   margin-top: 5rem;
@@ -62,7 +62,7 @@
   gap: 3.5rem;
 }
 
-.book {
+.product {
   background-color: #59617f;
   width: 30rem;
   min-height: 15rem;
@@ -70,7 +70,7 @@
   position: relative;
   padding: 2rem;
 }
-.book-img {
+.product-img {
   width: 10rem;
   height: 15rem;
   overflow: hidden;
@@ -79,12 +79,12 @@
   left: 1.5rem;
   border-radius: 1px;
 }
-.book-img img {
+.product-img img {
   width: 100%;
   background-position: center;
   background-size: cover;
 }
-.book-text {
+.product-text {
   /* border: 2px solid #fff; */
   margin-left: 11rem;
   width: 15rem;
@@ -93,10 +93,10 @@
   font-size: 13px;
   color: #fff;
 }
-.book-name {
+.product-name {
   font-size: 18px;
 }
-.book-author-text {
+.product-shop-text {
   margin-top: 0.5rem;
   color: #7f8ab2;
   letter-spacing: 1px;
@@ -107,7 +107,7 @@
   justify-content: space-between;
   align-items: flex-end;
 }
-.book-rating-container {
+.product-rating-container {
   display: flex;
   gap: 0.6rem;
   align-items: flex-end;
@@ -115,15 +115,15 @@
   font-size: 20px;
   color: #fec524;
 }
-.book-rating-container img {
+.product-rating-container img {
   width: 2rem;
 }
-.book-price {
+.product-price {
   font-size: 20px;
 }
 .doller {
   color: #5ec84d;
 }
-.book-desc {
+.product-desc {
   margin-top: 1rem;
 }

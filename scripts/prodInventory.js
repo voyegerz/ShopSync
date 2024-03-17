@@ -1,14 +1,95 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Function to fetch and display product inventory data
-  function fetchProductInventoryData() {
-    const s_id = window.sessionStorage.getItem("id"); // Replace with the actual value for s_id
+  //----- GLOBAL VARS-----//
+  var CURR_SHOP_ID = "";
+  const curr_shop_dd = document.querySelector("#curr-shop-dd");
 
-    fetch(`https://shopsync.pythonanywhere.com/get_products?s_id=${s_id}`, {
+  function get_curr_shop() {
+    const sk_id = window.sessionStorage.getItem("id");
+
+    fetch(`https://shopsync.pythonanywhere.com/get_curr_shop?sk_id=${sk_id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        CURR_SHOP_ID = data.curr_shop_id;
+        window.sessionStorage.setItem("curr_shop_id", CURR_SHOP_ID);
+      })
+      .catch((error) => console.error("Error:", error));
+  }
+
+  function get_all_shops_of_sk() {
+    const sk_id = window.sessionStorage.getItem("id");
+
+    fetch(`https://shopsync.pythonanywhere.com/get_all_shops_of_sk?sk_id=${sk_id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        populate_curr_shop_dd(data.sk_shops)
+      })
+      .catch((error) => console.error("Error:", error));
+  }
+
+  function set_curr_shop(curr_shop_id) {
+    const sk_id = window.sessionStorage.getItem("id");
+
+    const shopData = {
+      curr_s_id: curr_shop_id,
+      sk_id: sk_id
+    }
+
+    fetch(`https://shopsync.pythonanywhere.com/set_curr_shop`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(shopData) 
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        window.sessionStorage.setItem("curr_shop_id", data.curr_shop_id_set_to);
+        window.location.reload();
+      })
+      .catch((error) => console.error("Error:", error));
+  }
+
+  function fetchProductInventoryData() {
+    const curr_shop_id = window.sessionStorage.getItem("curr_shop_id");
+
+    fetch(
+      `https://shopsync.pythonanywhere.com/get_shop_products?curr_shop_id=${curr_shop_id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -24,10 +105,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to fetch and display shop products data for shopkeeper with search
   function fetchShopProducts(searchQuery = "") {
-    const s_id = window.sessionStorage.getItem("id"); // Replace with the actual value for s_id
+    const curr_shop_id = window.sessionStorage.getItem("curr_shop_id"); // Replace with the actual value for s_id
 
     // Include the search query in the API endpoint
-    const apiUrl = `https://shopsync.pythonanywhere.com/search_shop_products?s_id=${s_id}&q=${searchQuery}`;
+    const apiUrl = `https://shopsync.pythonanywhere.com/search_shop_products?curr_shop_id=${curr_shop_id}&q=${searchQuery}`;
 
     fetch(apiUrl, {
       method: "GET",
@@ -89,8 +170,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Fetch product inventory data on page load
-  fetchProductInventoryData();
+  get_curr_shop();
+
+  if (CURR_SHOP_ID == "NSR") {
+    alert("You have no shops registered , please register your shop first.");
+  } else {
+    // Fetch product inventory data on page load
+    fetchProductInventoryData();
+    get_all_shops_of_sk();
+  }
 
   // Function to enable editing of the product row
   function enableProductRowEditing(row) {
@@ -124,10 +212,33 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        alert(data.msg); // You can use alert or any other way to notify the user
+        alert(data.msg);
       })
       .catch((error) => console.error("Error:", error));
   }
+
+  function populate_curr_shop_dd(shops) {
+    const curr_shop_dd_index = window.sessionStorage.getItem("curr_shop_dd_selected_index");
+
+    shops.forEach((shop) => {
+      const shop_option = document.createElement("option");      
+      shop_option.textContent = shop.s_name;
+      shop_option.value = shop.s_id;
+
+
+      curr_shop_dd.appendChild(shop_option);
+    });
+
+    curr_shop_dd.options[curr_shop_dd_index].selected = true;
+  }
+
+  curr_shop_dd.addEventListener("change", (event) => { 
+    const s_id = event.target.value;
+    window.sessionStorage.setItem("curr_shop_dd_selected_index", curr_shop_dd.options.selectedIndex);
+    console.log("curr_shop_id", s_id);
+    set_curr_shop(s_id);
+    // curr_shop_dd.innerHTML = "";
+  });
 
   // Event delegation for "Edit" and "Update" buttons inside the table body
   const tableBody = document.querySelector(
@@ -151,7 +262,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const p_quantity = row.querySelector("#p_quant").value;
       const p_type = row.querySelector("#p_type").value;
 
-      const s_id = window.sessionStorage.getItem("id"); // Replace with the actual value for s_id
+      const curr_shop_id = window.sessionStorage.getItem("curr_shop_id"); // Replace with the actual value for s_id
 
       const productData = {
         p_id: p_id,
@@ -159,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
         p_price: p_price,
         p_quantity: p_quantity,
         p_type: p_type,
-        s_id: s_id,
+        curr_shop_id: curr_shop_id,
       };
 
       updateProductData(productData);

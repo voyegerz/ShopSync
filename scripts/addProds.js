@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Reset input values in the cloned row
     const inputFields = newRow.querySelectorAll(".inp-prod");
+    const fileInput = newRow.querySelector(".inp-file-input");
+    fileInput.value = "";
     inputFields.forEach((input) => {
       input.value = "";
     });
@@ -93,40 +95,46 @@ document.addEventListener("DOMContentLoaded", function () {
       ".add-product-container table tbody"
     );
     const rows = tableBody.querySelectorAll("tr");
+    const formData = new FormData();
 
-      const productData = [];
-      
-      const s_id = window.sessionStorage.getItem("id");
+    const curr_shop_id = window.sessionStorage.getItem("curr_shop_id");
 
-    rows.forEach((row) => {
+    rows.forEach((row, index) => {
       const cells = row.querySelectorAll("td input");
-      const product = {
-        p_name: cells[0].value,
-        p_price: cells[1].value,
-        p_quantity: cells[2].value,
-        p_type: cells[3].value,
-        s_id: s_id, // Replace with the actual value for s_id
-      };
+      // Append each field to formData
+      formData.append(`products[${index}][p_name]`, cells[0].value);
+      formData.append(`products[${index}][p_price]`, cells[1].value);
+      formData.append(`products[${index}][p_quantity]`, cells[2].value);
+      formData.append(`products[${index}][p_type]`, cells[3].value);
 
-      productData.push(product);
+      // Check if a file is selected before appending
+      if (cells[4].type === "file" && cells[4].files.length > 0) {
+        formData.append(`products[${index}][p_image]`, cells[4].files[0]);
+      }
+
+      formData.append(`products[${index}][curr_shop_id]`, curr_shop_id);
     });
-
-    return productData;
+    console.log("rows - ", rows.length);
+    // Display the key/value pairs
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
+    return formData;
   }
 
   // Function to send all product data to the Flask API endpoint
   function sendAllProductDataToEndpoint() {
-    const productData = getAllProductData();
+    const formData = getAllProductData();
 
     fetch("https://shopsync.pythonanywhere.com/add_products", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ products: productData }),
+      body: formData,
     })
       .then((response) => response.json())
-        .then((data) => { console.log(data); alert(data.msg); })
+      .then((data) => {
+        console.log(data);
+        alert(data.msg);
+      })
       .catch((error) => console.error("Error:", error));
   }
 });
