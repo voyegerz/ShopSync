@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Function to fetch and display product inventory data
   //----- GLOBAL VARS-----//
-  var CURR_SHOP_ID = "";
+
   const curr_shop_dd = document.querySelector("#curr-shop-dd");
 
   function get_curr_shop() {
@@ -21,8 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then((data) => {
         console.log(data);
-        CURR_SHOP_ID = data.curr_shop_id;
-        window.sessionStorage.setItem("curr_shop_id", CURR_SHOP_ID);
+        window.sessionStorage.setItem("curr_shop_id", data.curr_shop_id);
       })
       .catch((error) => console.error("Error:", error));
   }
@@ -172,12 +171,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   get_curr_shop();
 
-  if (CURR_SHOP_ID == "NSR") {
+  if (window.sessionStorage.getItem("curr_shop_id") == "NSR") {
     alert("You have no shops registered , please register your shop first.");
   } else {
     // Fetch product inventory data on page load
-    fetchProductInventoryData();
     get_all_shops_of_sk();
+    fetchProductInventoryData();
+    
   }
 
   // Function to enable editing of the product row
@@ -225,7 +225,6 @@ document.addEventListener("DOMContentLoaded", function () {
       shop_option.textContent = shop.s_name;
       shop_option.value = shop.s_id;
 
-
       curr_shop_dd.appendChild(shop_option);
     });
 
@@ -235,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
   curr_shop_dd.addEventListener("change", (event) => { 
     const s_id = event.target.value;
     window.sessionStorage.setItem("curr_shop_dd_selected_index", curr_shop_dd.options.selectedIndex);
-    console.log("curr_shop_id", s_id);
+    //console.log("curr_shop_id", s_id);
     set_curr_shop(s_id);
     // curr_shop_dd.innerHTML = "";
   });

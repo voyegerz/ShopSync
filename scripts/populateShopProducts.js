@@ -27,8 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to fetch and display shop products data for shopkeeper with search
   function fetchLocalProductDataOnSearch(searchQuery = "") {
+    const loc_string = window.sessionStorage.getItem("loc_string");
     // Include the search query in the API endpoint
-    const apiUrl = `https://shopsync.pythonanywhere.com/search_products?sq=${searchQuery}`;
+    const apiUrl = `https://shopsync.pythonanywhere.com/search_products?sq=${searchQuery}&loc_string=${loc_string}`;
 
     fetch(apiUrl, {
       method: "GET",
@@ -43,8 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
         return response.json();
       })
       .then((data) => {
-        // updateProducts(data.p_data);
         console.log(data);
+        updateProducts(data.search_results);
+        
       })
       .catch((error) => console.error("Error:", error));
   }
@@ -52,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to update the product inventory table with data
   function updateProducts(p_data) {
     const p_list_cont = document.querySelector(".products-list");
+    p_list_cont.innerHTML = "";
 
     p_data.forEach((product, index) => {
       const p_card = document.createElement("div");
@@ -59,7 +62,9 @@ document.addEventListener("DOMContentLoaded", function () {
       p_card.innerHTML = `
               <!-- product image  -->
               <div class="product-img">
-                <img src="https://shopsync.pythonanywhere.com/get_p_image?image_name=${String(product.p_image)}" alt="" />
+                <img src="https://shopsync.pythonanywhere.com/get_p_image?image_name=${String(
+                  product.p_image
+                )}" alt="" />
               </div>
 
               <!-- product text  -->
@@ -78,7 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
                   </div>
 
                   <!-- product price -->
-                  <p class="product-price"><span class="doller">₹</span>${product.p_price}</p>
+                  <p class="product-price"><span class="doller">₹</span>${
+                    product.p_price
+                  }</p>
                 </div>
 
                 <!-- product description  -->
@@ -99,7 +106,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const search_inp = document.querySelector("#main-search");
   search_inp.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
-      search_query = e.target.value.trim();
+      const search_query = e.target.value.trim();
+      console.log("sq:", search_query);
       fetchLocalProductDataOnSearch(search_query);
     }
   });
